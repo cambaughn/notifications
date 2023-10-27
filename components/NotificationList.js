@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import NotificationListItem from './NotificationListItem';
 
 export default function NotificationList({ notifications }) {
   return (
@@ -14,6 +15,12 @@ export default function NotificationList({ notifications }) {
 
 const styles = StyleSheet.create({
   container: {
-
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 30,
+    gap: 1,
+    paddingBottom: 60,
   },
 });

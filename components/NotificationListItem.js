@@ -13,6 +13,7 @@ export default function NotificationList({ notifications }) {
 const styles = EStyleSheet.create({
   container: {
     width: '100%',
+    height: 100,
     backgroundColor: '#273246',
     display: 'flex',
     alignItems: 'center',
