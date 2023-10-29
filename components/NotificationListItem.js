@@ -2,12 +2,33 @@
 import { View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-export default function NotificationList({ notifications }) {
-  return (
-    <View style={styles.container}>
-      
-    </View>
-  );
+export default function NotificationListItem({ notification }) {
+  if (notification.type === 'mention') {
+    return (
+      <View style={styles.container}>
+        
+      </View>
+    );
+  } else if (notification.type === 'friend_request') {
+    return (
+      <View style={styles.container}>
+        
+      </View>
+    );
+  } else if (notification.type === 'invite') {
+    return (
+      <View style={styles.container}>
+        
+      </View>
+    );
+  } else if (notification.type === 'direct_message') {
+    return (
+      <View style={styles.container}>
+        
+      </View>
+    );
+  }
+
 }
 
 const styles = EStyleSheet.create({

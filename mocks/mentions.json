@@ -1,92 +1,122 @@
+// Mention is within a specific community and channel, always has message content
+// Friend request is not within a community or channel, does not have message content (could in future have content if we allow users to send a message with their friend request)
+// Invite can be to a community in general or a specific channel within a community that a user has already joined
+// Direct message: If Slack-like, DMs are within a community. If not, DMs are outside of the community. For this, I will assume DMs are outside of the community and can be between any users. Direct messages have IDs, but no name
 [
   {
     "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b053",
-    "origin_user_username": "Jesse",
-    "content": "Hey @Cameron, did you see the latest update?",
-    "timestamp": "2023-10-26T14:32:45Z"
-  },
-  {
-    "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b054",
-    "origin_user_username": "Alex",
-    "content": "I agree with @Cameron, the new feature is amazing!",
-    "timestamp": "2023-10-24T16:10:32Z"
-  },
-  {
-    "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b055",
-    "origin_user_username": "Taylor",
-    "content": "@Cameron, have you seen the bug report?",
-    "timestamp": "2023-10-22T11:45:08Z"
-  },
-  {
-    "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b056",
-    "origin_user_username": "Jordan",
-    "content": "@Cameron, thanks for the help with the issue!",
-    "timestamp": "2023-10-21T09:22:30Z"
-  },
-  {
-    "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b057",
-    "origin_user_username": "Mia",
-    "content": "@Cameron, what do you think about the new design?",
-    "timestamp": "2023-10-20T18:47:12Z"
-  },
-  {
-    "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b058",
-    "origin_user_username": "Olivia",
-    "content": "@Cameron, can you review my pull request?",
-    "timestamp": "2023-10-19T13:15:46Z"
-  },
-  {
-    "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b059",
-    "origin_user_username": "Ethan",
-    "content": "@Cameron, are you attending the meeting tomorrow?",
-    "timestamp": "2023-10-18T10:03:29Z"
-  },
-  {
-    "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b060",
-    "origin_user_username": "Sophia",
-    "content": "@Cameron, your presentation was excellent!",
-    "timestamp": "2023-10-17T21:49:15Z"
-  },
-  {
-    "type": "mention",
-    "target_user_id": "603f650b38f750047ce0b052",
-    "target_user_username": "Cameron",
-    "origin_user_id": "603f650b38f750047ce0b061",
-    "origin_user_username": "Aiden",
-    "content": "@Cameron, did you get a chance to look at the issue?",
-    "timestamp": "2023-10-17T15:32:08Z"
-  },
-  {
-    "type": "mention",
+    "id": "623f650b38f750047ce0b001",
     "target_user_id": "603f650b38f750047ce0b052",
     "target_user_username": "Cameron",
     "origin_user_id": "603f650b38f750047ce0b062",
     "origin_user_username": "Emma",
     "content": "@Cameron, thanks for the feedback!",
-    "timestamp": "2023-10-16T08:10:22Z"
+    "timestamp": "2023-10-16T08:10:22Z",
+    "channel_id": "423f650b38f750047ce0b072",
+    "channel_name": "General",
+    "community_id": "523f650b38f750047ce0b082",
+    "community_name": "Root Developers",
+    "direct_message_id": null
+  },
+  {
+    "type": "friend_request",
+    "id": "623f650b38f750047ce0b002",
+    "target_user_id": "603f650b38f750047ce0b052",
+    "target_user_username": "Cameron",
+    "origin_user_id": "603f650b38f750047ce0b063",
+    "origin_user_username": "Sophia",
+    "content": null,
+    "timestamp": "2023-10-17T09:45:15Z",
+    "channel_id": null,
+    "community_id": null,
+    "community_name": null,
+    "direct_message_id": null
+  },
+  {
+    "type": "invite",
+    "id": "623f650b38f750047ce0b003",
+    "target_user_id": "603f650b38f750047ce0b052",
+    "target_user_username": "Cameron",
+    "origin_user_id": "603f650b38f750047ce0b064",
+    "origin_user_username": "Aiden",
+    "content": "@Cameron, please join our team!",
+    "timestamp": "2023-10-18T11:30:30Z",
+    "channel_id": "423f650b38f750047ce0b073",
+    "channel_name": "Water Cooler",
+    "community_id": "523f650b38f750047ce0b083",
+    "community_name": "Root Developers",
+    "direct_message_id": null
+  },
+  {
+    "type": "direct_message",
+    "id": "623f650b38f750047ce0b004",
+    "target_user_id": "603f650b38f750047ce0b052",
+    "target_user_username": "Cameron",
+    "origin_user_id": "603f650b38f750047ce0b065",
+    "origin_user_username": "Mia",
+    "content": "Hey Cameron, are you free for a call?",
+    "timestamp": "2023-10-19T13:00:45Z",
+    "channel_id": null,
+    "community_id": null,
+    "community_name": null,
+    "direct_message_id": "723f650b38f750047ce0b093"
+  },
+  {
+    "type": "mention",
+    "id": "623f650b38f750047ce0b005",
+    "target_user_id": "603f650b38f750047ce0b052",
+    "target_user_username": "Cameron",
+    "origin_user_id": "603f650b38f750047ce0b066",
+    "origin_user_username": "Jordan",
+    "content": "@Cameron, did you check out the new features?",
+    "timestamp": "2023-10-20T15:20:35Z",
+    "channel_id": "423f650b38f750047ce0b074",
+    "channel_name": "Feedback",
+    "community_id": "523f650b38f750047ce0b084",
+    "community_name": "Root Developers",
+    "direct_message_id": null
+  },
+  {
+    "type": "friend_request",
+    "id": "623f650b38f750047ce0b006",
+    "target_user_id": "603f650b38f750047ce0b052",
+    "target_user_username": "Cameron",
+    "origin_user_id": "603f650b38f750047ce0b067",
+    "origin_user_username": "Olivia",
+    "content": null,
+    "timestamp": "2023-10-21T17:40:28Z",
+    "channel_id": null,
+    "community_id": null,
+    "community_name": null,
+    "direct_message_id": null
+  },
+  {
+    "type": "invite",
+    "id": "623f650b38f750047ce0b007",
+    "target_user_id": "603f650b38f750047ce0b052",
+    "target_user_username": "Cameron",
+    "origin_user_id": "603f650b38f750047ce0b068",
+    "origin_user_username": "Ethan",
+    "content": "@Cameron, join us for the game night!",
+    "timestamp": "2023-10-22T20:05:20Z",
+    "channel_id": "423f650b38f750047ce0b075",
+    "channel_name": "Games",
+    "community_id": "523f650b38f750047ce0b085",
+    "community_name": "Root Developers",
+    "direct_message_id": null
+  },
+  {
+    "type": "direct_message",
+    "id": "623f650b38f750047ce0b008",
+    "target_user_id": "603f650b38f750047ce0b052",
+    "target_user_username": "Cameron",
+    "origin_user_id": "603f650b38f750047ce0b069",
+    "origin_user_username": "Taylor",
+    "content": "Cameron, did you see my last message?",
+    "timestamp": "2023-10-23T22:15:45Z",
+    "channel_id": null,
+    "community_id": null,
+    "community_name": null,
+    "direct_message_id": "723f650b38f750047ce0b094"
   }
 ]
