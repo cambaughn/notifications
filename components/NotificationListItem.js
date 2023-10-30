@@ -24,10 +24,15 @@ export default function NotificationListItem({ notification, markRead, respondTo
       case 'friend_request':
         return (
           <>
+            { !!notification.friend_request_response &&
+              <Text style={styles.notificationText}>You <Text style={{color: notification.friend_request_response === 'accepted' ? '#2ecc71' : '#e74c3c'}}>{notification.friend_request_response}</Text> a friend request from </Text>
+            }
             <TouchableOpacity style={styles.userButton}>
               <Text style={styles.notificationText}>@{notification.origin_user_username}</Text>
             </TouchableOpacity>
-            <Text style={styles.notificationText}> sent you a friend request</Text>
+            { !notification.friend_request_response &&
+              <Text style={styles.notificationText}> sent you a friend request</Text>
+            }
           </>
         )
       case 'invite':

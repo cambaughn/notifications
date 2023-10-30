@@ -64,6 +64,7 @@ export default function NotificationsContainer() {
   const respondToFriendRequest = (id, response) => {
     let updatedNotifications = notifications.map(notification => {
       if (notification.id === id) {
+        notification.read = true;
         notification.friend_request_response = response;
       }
       return notification;
