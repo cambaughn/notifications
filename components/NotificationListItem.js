@@ -63,7 +63,7 @@ export default function NotificationListItem({ notification, markRead }) {
             <View style={styles.notificationTextWrapper}>
               {renderNotificationText()}
             </View>
-            <Text style={styles.lightText}>{notification.timeago}</Text>
+            <Text style={styles.timeAgo}>{notification.timeago}</Text>
           </View>
       </View>
 
@@ -124,6 +124,10 @@ const styles = EStyleSheet.create({
     height: 10,
     backgroundColor: '#6D68FF',
     borderRadius: 10,
+  },
+  timeAgo: {
+    color: '#8A8A8A',
+    marginTop: 5,
   }
 });
 

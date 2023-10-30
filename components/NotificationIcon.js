@@ -15,7 +15,7 @@ export default function NotificationIcon({ notificationType }) {
   }
   return (
     <View style={styles.container}>
-      <Feather name={determineIcon()} size={25} color="white" />
+      <Feather name={determineIcon()} size={22} color="white" />
     </View>
   );
 }

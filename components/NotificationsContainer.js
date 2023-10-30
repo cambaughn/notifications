@@ -21,14 +21,13 @@ export default function NotificationsContainer() {
   }
 
   const getInitialNotifications = () => {
-    // Simulate an API call for the intial notifications (notifications that already exist in the database)
+    // Simulate an API call for the initial notifications (notifications that already exist in the database)
     setTimeout(() => {
       let processedNotifications = initialNotifications.map(notification => {
         // Add a new property to the notification object called 'read'
         // This will be used to determine if the notification has been read or not
         notification.read = false;
         notification.timeago = formatDistanceToNow(parseISO(notification.timestamp), { addSuffix: true });
-        console.log(notification.timeago)
         return notification;
       })
       .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
@@ -37,6 +36,18 @@ export default function NotificationsContainer() {
   }
 
   useEffect(getInitialNotifications, []);
+
+  const filterNotifications = () => {
+    if (selectedFilter === 'Mentions') {
+      return notifications.filter(notification => notification.type === 'mention');
+    } else if (selectedFilter === 'Friend Requests') {
+      return notifications.filter(notification => notification.type === 'friend_request');
+    } else if (selectedFilter === 'Invites') {
+      return notifications.filter(notification => notification.type === 'invite');
+    } else {
+      return notifications;
+    }
+  }
 
   // In practice, I might suggest just having the notifications be marked as read once they're on the screen for a certain amount of time, indicating that the user has seen them, but for this purpose, I'll just mark them as read when they're pressed
   const markRead = (id) => {
@@ -53,7 +64,7 @@ export default function NotificationsContainer() {
     <ScrollView style={styles.container}>
       <View style={styles.mainContent}>
         <Filters filters={filters} selectedFilter={selectedFilter} setFilter={setFilter} />
-        <NotificationList notifications={notifications} markRead={markRead} />
+        <NotificationList notifications={filterNotifications()} markRead={markRead} />
       </View>
     </ScrollView>
   );
