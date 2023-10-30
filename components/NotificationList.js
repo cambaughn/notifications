@@ -1,12 +1,12 @@
 import { StyleSheet, View } from 'react-native';
 import NotificationListItem from './NotificationListItem';
 
-export default function NotificationList({ notifications }) {
+export default function NotificationList({ notifications, markRead }) {
   return (
     <View style={styles.container}>
       { notifications.map(notification => {
         return (
-          <NotificationListItem notification={notification} key={notification.id} />
+          <NotificationListItem notification={notification} markRead={markRead} key={notification.id} />
         )
       })}
     </View>

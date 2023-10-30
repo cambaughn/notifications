@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import NotificationIcon from './NotificationIcon';
 
-export default function NotificationListItem({ notification }) {
+export default function NotificationListItem({ notification, markRead }) {
   // I normally avoid rendering logic in components, but this is a case where it makes sense, simply due to the flexibility of the component and put this logic in one place
   const renderNotificationText = () => {
     // Switch statement for the different notification types
@@ -53,26 +53,24 @@ export default function NotificationListItem({ notification }) {
       default:
         return null
     }
-    
-    
   }
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => markRead(notification.id)}>
       <View style={styles.leftSide}>
         <NotificationIcon notificationType={notification.type} />
           <View style={styles.mainContent}>
             <View style={styles.notificationTextWrapper}>
               {renderNotificationText()}
             </View>
-            <Text style={styles.lightText}>{notification.time_ago}</Text>
+            <Text style={styles.lightText}>{notification.timeago}</Text>
           </View>
       </View>
 
       <View style={styles.rightSide}>
         {!notification.read && <View style={styles.unreadIndicator}></View>}
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
