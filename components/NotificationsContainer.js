@@ -50,6 +50,7 @@ export default function NotificationsContainer() {
   }
 
   // In practice, I might suggest just having the notifications be marked as read once they're on the screen for a certain amount of time, indicating that the user has seen them, but for this purpose, I'll just mark them as read when they're pressed
+  // Also, in the full app, handling a press on the notification would take the user to the appropriate place in the app
   const markRead = (id) => {
     let updatedNotifications = notifications.map(notification => {
       if (notification.id === id) {
@@ -60,11 +61,21 @@ export default function NotificationsContainer() {
     setNotifications(updatedNotifications);
   }
 
+  const respondToFriendRequest = (id, response) => {
+    let updatedNotifications = notifications.map(notification => {
+      if (notification.id === id) {
+        notification.friend_request_response = response;
+      }
+      return notification;
+    });
+    setNotifications(updatedNotifications);
+  }
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.mainContent}>
         <Filters filters={filters} selectedFilter={selectedFilter} setFilter={setFilter} />
-        <NotificationList notifications={filterNotifications()} markRead={markRead} />
+        <NotificationList notifications={filterNotifications()} markRead={markRead} respondToFriendRequest={respondToFriendRequest} />
       </View>
     </ScrollView>
   );
