@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Filters from './Filters';
 import NotificationList from './NotificationList';
 // Mock Data
-import mentions from '../mocks/mentions.json';
+import initialNotifications from '../mocks/notifications.json';
 
 // Following a container + pure component model
 // This container handles all state and data fetching
@@ -20,7 +20,7 @@ export default function NotificationsContainer() {
   const getInitialNotifications = () => {
     // Simulate an API call
     setTimeout(() => {
-      setNotifications(mentions);
+      setNotifications(initialNotifications);
     }, 1000);
   }
 
