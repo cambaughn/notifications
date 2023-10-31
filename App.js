@@ -3,13 +3,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import NotificationsContainer from './components/NotificationsContainer';
 import EStyleSheet from 'react-native-extended-stylesheet';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <NotificationsContainer />
-      <StatusBar style="dark" />
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.container}>
+        <NotificationsContainer />
+        <StatusBar style="dark" />
+      </SafeAreaView>
+    </Provider>
   );
 }
 

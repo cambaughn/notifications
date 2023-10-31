@@ -6,6 +6,8 @@ import NotificationList from './NotificationList';
 import initialNotifications from '../mocks/notifications.json';
 // Util
 import { formatDistanceToNow, parseISO } from 'date-fns';
+import { useSelector, useDispatch } from 'react-redux'
+import { addNotifications, updateNotification } from '../redux/notificationSlice';
 
 
 // Following a container + pure component model
@@ -14,7 +16,9 @@ import { formatDistanceToNow, parseISO } from 'date-fns';
 export default function NotificationsContainer() {
   const filters = ['All', 'Mentions', 'Friend Requests', 'Invites'];
   const [selectedFilter, setSelectedFilter] = useState('All');
-  const [notifications, setNotifications] = useState([]);
+  // const [notifications, setNotifications] = useState([]);
+  const notifications = useSelector((state) => state.notifications);
+  const dispatch = useDispatch();
 
   const setFilter = (filter) => {
     setSelectedFilter(filter);
@@ -31,7 +35,9 @@ export default function NotificationsContainer() {
         return notification;
       })
       .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-      setNotifications(processedNotifications);
+
+      dispatch(addNotifications(processedNotifications));
+      // setNotifications(processedNotifications);
     }, 1000);
   }
 
@@ -52,24 +58,16 @@ export default function NotificationsContainer() {
   // In practice, I might suggest just having the notifications be marked as read once they're on the screen for a certain amount of time, indicating that the user has seen them, but for this purpose, I'll just mark them as read when they're pressed
   // Also, in the full app, handling a press on the notification would take the user to the appropriate place in the app
   const markRead = (id) => {
-    let updatedNotifications = notifications.map(notification => {
-      if (notification.id === id) {
-        notification.read = true;
-      }
-      return notification;
-    });
-    setNotifications(updatedNotifications);
+    const update = { read: true }
+    dispatch(updateNotification({ id, update }));
   }
 
   const respondToFriendRequest = (id, response) => {
-    let updatedNotifications = notifications.map(notification => {
-      if (notification.id === id) {
-        notification.read = true;
-        notification.friend_request_response = response;
-      }
-      return notification;
-    });
-    setNotifications(updatedNotifications);
+    const update = { 
+      read: true, 
+      friend_request_response: response
+    }
+    dispatch(updateNotification({ id, update }));
   }
 
   return (
