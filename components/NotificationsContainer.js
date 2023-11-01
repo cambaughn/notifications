@@ -99,6 +99,7 @@ export default function NotificationsContainer() {
     };
   }, []);
 
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.mainContent}>
