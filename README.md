@@ -1,4 +1,4 @@
-# Root Notifications
+# Notifications Project
 
 ## Installation and Setup
 
