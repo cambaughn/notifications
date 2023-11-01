@@ -2,18 +2,23 @@ import { Fragment } from 'react';
 import { View, Text } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import NotificationListItem from './NotificationListItem';
+import { getDateHeading, getTimeAgo } from '../util/date';
+
 
 export default function NotificationList({ notifications, markRead, respondToFriendRequest }) {
   return (
     <View style={styles.container}>
       { notifications.map((notification, index) => {
+        let dateHeading = getDateHeading(notification.timestamp);
+        let prevDateHeading = notifications[index - 1] ? getDateHeading(notifications[index - 1].timestamp) : null;
+        let timeago = getTimeAgo(notification.timestamp);
         return (
-          <Fragment key={notification.id}>
-            { notification.timeago !== notifications[index - 1]?.timeago &&
-              <Text style={styles.dateHeading}>{notification.timeago}</Text>
+          <View key={notification.id}>
+            { dateHeading !== prevDateHeading &&
+              <Text style={styles.dateHeading}>{dateHeading}</Text>
             }
-            <NotificationListItem notification={notification} markRead={markRead} respondToFriendRequest={respondToFriendRequest} />
-          </Fragment>
+            <NotificationListItem notification={notification} timeago={timeago} markRead={markRead} respondToFriendRequest={respondToFriendRequest} />
+          </View>
         )
       })}
     </View>

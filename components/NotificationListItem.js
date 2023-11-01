@@ -4,7 +4,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import NotificationIcon from './NotificationIcon';
 import FriendRequestActions from './FriendRequestActions';
 
-export default function NotificationListItem({ notification, markRead, respondToFriendRequest }) {
+export default function NotificationListItem({ notification, timeago, markRead, respondToFriendRequest }) {
   // I normally avoid rendering logic in components, but this is a case where it makes sense, simply due to the flexibility of the component and put this logic in one place
   const renderNotificationText = () => {
     // Switch statement for the different notification types
@@ -69,7 +69,7 @@ export default function NotificationListItem({ notification, markRead, respondTo
             <View style={styles.notificationTextWrapper}>
               {renderNotificationText()}
             </View>
-            <Text style={styles.timeAgo}>{notification.timeago}</Text>
+            <Text style={styles.timeAgo}>{timeago}</Text>
             { notification.type === 'friend_request' && !notification.friend_request_response &&
               <FriendRequestActions respondToFriendRequest={(response) => respondToFriendRequest(notification.id, response)} />
             }

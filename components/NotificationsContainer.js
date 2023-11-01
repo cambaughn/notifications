@@ -5,7 +5,6 @@ import NotificationList from './NotificationList';
 // Mock Data
 import initialNotifications from '../mocks/notifications.json';
 // Util
-import { formatDistanceToNow, parseISO } from 'date-fns';
 import { useSelector, useDispatch } from 'react-redux'
 import { addNotifications, updateNotification } from '../redux/notificationSlice';
 import { generateNotification } from '../mocks/notificationGenerator';
@@ -63,7 +62,6 @@ export default function NotificationsContainer() {
         // Add a new property to the notification object called 'read'
         // This will be used to determine if the notification has been read or not
         notification.read = false;
-        notification.timeago = formatDistanceToNow(parseISO(notification.timestamp), { addSuffix: true });
         return notification;
       })
       .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
